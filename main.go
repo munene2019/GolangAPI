@@ -131,11 +131,36 @@ func tokenHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "OAuth Token:", token)
 }
 
+type Person struct {
+	Name string
+	Age  int
+}
+
 func main() {
-	http.HandleFunc("/token", tokenHandler)
-	http.HandleFunc("/send", sendHandler)
-	fmt.Println("Server starting on port 8080...")
-	if err := http.ListenAndServe(":8080", nil); err != nil {
-		fmt.Println("Error starting server:", err)
-	}
+	p := Person{}
+	p.Age = 10
+	fmt.Println(p.Age)
+	//	fmt.Print("Rogers")
+	c1 := &Controller{}
+	c2 := Controller{}
+
+	// 	// Using the pointer receiver method
+	c1.setIdPointer(1)
+	c1.setNamePointer("Changed with Pointer")
+	//fmt.Println(c1.name) // Output: Changed with Pointer
+	fmt.Println("..ID...", c1.id)
+	// //fmt.Print("end...", c1)
+
+	// 	// Using the value receiver method
+	c2.setIdPointer(3)
+	c2.setNameValue("Changed with Value")
+	fmt.Println(c2.name) // Output: Original
+	fmt.Println("id value", c2.id)
+
+	// http.HandleFunc("/token", tokenHandler)
+	// http.HandleFunc("/send", sendHandler)
+	// fmt.Println("Server starting on port 8080...")
+	// if err := http.ListenAndServe(":8080", nil); err != nil {
+	// 	fmt.Println("Error starting server:", err)
+	// }
 }
