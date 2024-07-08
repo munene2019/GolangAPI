@@ -137,25 +137,37 @@ type Person struct {
 }
 
 func main() {
-	p := Person{}
-	p.Age = 10
-	fmt.Println(p.Age)
-	//	fmt.Print("Rogers")
-	c1 := &Controller{}
-	c2 := Controller{}
+	var namePtr *string // Declaring a pointer to string
+	fmt.Println("Results1 ", namePtr)
+	name := "John Doe"
+	fmt.Println("Results2 ", &name)
+	namePtr = &name // Assigning the address of name to namePtr
+	fmt.Println("Results3 ", *namePtr)
 
-	// 	// Using the pointer receiver method
-	c1.setIdPointer(1)
-	c1.setNamePointer("Changed with Pointer")
-	//fmt.Println(c1.name) // Output: Changed with Pointer
-	fmt.Println("..ID...", c1.id)
-	// //fmt.Print("end...", c1)
+	// name1 := "John Doe"
+	// namePtr := &name1
+	// *namePtr = "Jane Smith" // Update the string value indirectly through namePtr
+	// fmt.Println("Results ", namePtr)
+	// fmt.Println("Results ", &name1)
+	//p := Person{}
+	// p.Age = 10
+	// fmt.Println(p.Age)
+	// //	fmt.Print("Rogers")
+	// c1 := &Controller{}
+	// c2 := Controller{}
 
-	// 	// Using the value receiver method
-	c2.setIdPointer(3)
-	c2.setNameValue("Changed with Value")
-	fmt.Println(c2.name) // Output: Original
-	fmt.Println("id value", c2.id)
+	// // 	// Using the pointer receiver method
+	// c1.setIdPointer(1)
+	// c1.setNamePointer("Changed with Pointer")
+	// //fmt.Println(c1.name) // Output: Changed with Pointer
+	// fmt.Println("..ID...", c1.id)
+	// // //fmt.Print("end...", c1)
+
+	// // 	// Using the value receiver method
+	// c2.setIdPointer(3)
+	// c2.setNameValue("Changed with Value")
+	// fmt.Println(c2.name) // Output: Original
+	// fmt.Println("id value", c2.id)
 
 	// http.HandleFunc("/token", tokenHandler)
 	// http.HandleFunc("/send", sendHandler)
@@ -164,3 +176,42 @@ func main() {
 	// 	fmt.Println("Error starting server:", err)
 	// }
 }
+
+// package main
+
+// import (
+// 	"fmt"
+// )
+
+// type MyStruct struct {
+// 	field  int
+// 	field2 string
+// 	field3 bool
+// }
+
+// // Value receiver method
+// func (s MyStruct) ValueReceiverMethod() {
+// 	s.field = 10
+// 	//s.field2 = "rogers"
+// }
+
+// // Pointer receiver method
+// func (s *MyStruct) PointerReceiverMethod() {
+// 	//s.field = 20
+// }
+
+// func main() {
+// 	// Create an instance of MyStruct
+// 	s := MyStruct{}
+// 	s.field = 5
+// 	s.field2 = "nene"
+// 	s.field3 = true
+
+// 	// Call value receiver method
+// 	s.ValueReceiverMethod()
+// 	fmt.Println("After ValueReceiverMethod:", s.field2) // Output: 5
+
+// 	// Call pointer receiver method
+// 	s.PointerReceiverMethod()
+// 	fmt.Println("After PointerReceiverMethod:", s) // Output: 20
+// }
