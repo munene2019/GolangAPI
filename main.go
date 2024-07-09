@@ -136,13 +136,38 @@ type Person struct {
 	Age  int
 }
 
+func stringProcess(pid string) *string {
+	return &pid
+}
+func PreProcess(pid *string) {
+
+	fmt.Println("Preprocess request id: ", pid)
+}
+
 func main() {
-	var namePtr *string // Declaring a pointer to string
-	fmt.Println("Results1 ", namePtr)
-	name := "John Doe"
-	fmt.Println("Results2 ", &name)
-	namePtr = &name // Assigning the address of name to namePtr
-	fmt.Println("Results3 ", *namePtr)
+
+	// Creating a map with string keys and int values
+	myMap := map[string]string{
+		"apple":  "10",
+		"banana": "3",
+		"orange": "2",
+	}
+
+	// Looping through the map
+	for key, value := range myMap {
+		fmt.Printf("Key: %s, Value: %s\n", key, value)
+	}
+	// //localAddress *string =stringProcess("ROOT")
+	// //addLoc:=stringProcess("ROOT")
+	// addLoc := stringProcess("ROOT")
+
+	// fmt.Println("Memory value", *addLoc)
+	// var namePtr *string // Declaring a pointer to string
+	// fmt.Println("Results1 Address ", stringProcess("ROOT"))
+	// name := "John Doe"
+	// fmt.Println("Results2 ", &name)
+	// namePtr = &name // Assigning the address of name to namePtr
+	// fmt.Println("Results3 ", *namePtr)
 
 	// name1 := "John Doe"
 	// namePtr := &name1
